@@ -13,13 +13,13 @@ st.write("Please enter the values and hit the predict button for getting a predi
 
 st.divider()
 
-age = st.number_input("Enter your age: ", min_value = 8, max_value = 100, value = 30)
+age = st.number_input("Enter your age: ", min_value=8, max_value=100, value=30)
 
 gender = st.selectbox("Select the Gender", ["Male", "Female"])
 
-tenure = st.number_input("Enter the value of the Tenure : ", min_value = 0, max_value = 130, value = 10)
+tenure = st.number_input("Enter the value of the Tenure: ", min_value=0, max_value=130, value=10)
 
-monthlycharge = st.number_input("Enter Monthyl Charge", min_value = 30, max_value = 150)
+monthlycharge = st.number_input("Enter Monthly Charge", min_value=30, max_value=150)
 
 st.divider()
 
@@ -29,20 +29,15 @@ if predictButton:
 
     gender_selected = 1 if gender == "Female" else 0
 
-    x = [age, gender, tenure, monthlycharge]
+    x = [age, gender_selected, tenure, monthlycharge]  # ✅ Corrected here
 
-    x1 = np.array(x)
-
-    x_array = scaler.transform(np.array([x1]))
+    x_array = scaler.transform([x])  # already a list of one sample
 
     prediction = model.predict(x_array)[0]
 
     predicted = "Yes" if prediction == 1 else "No"
 
-    st.write(f"Predicted : {predicted}")
-
-
+    st.success(f"Predicted: {predicted}")
 
 else:
-    st.write("Please enter the values and tap the PREDICT button")
-
+    st.info("Please enter the values and tap the PREDICT button")
