@@ -15,7 +15,7 @@ st.divider()
 
 age = st.number_input("Enter your age: ", min_value = 8, max_value = 100, value = 30)
 
-gender = st.select_slider("Select the Gender", ["Male", "Female"])
+gender = st.selectbox("Select the Gender", ["Male", "Female"])
 
 tenure = st.number_input("Enter the value of the Tenure : ", min_value = 0, max_value = 130, value = 10)
 
