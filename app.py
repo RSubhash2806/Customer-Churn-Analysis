@@ -33,7 +33,7 @@ if predictButton:
 
     x1 = np.array(x)
 
-    x_array = scaler.transform([x1])
+    x_array = scaler.transform(np.array([x1]))
 
     prediction = model.predict(x_array)[0]
 
